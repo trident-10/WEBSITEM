@@ -1,785 +1,525 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="tr">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <meta name="description" content="Mete Artun Altay — ALTAY | Kişisel portföy: projeler, deneyim, yetenekler ve iletişim." />
-    <title>Mete Artun Altay — ALTAY | Portföy</title>
-
-    <style>
-        :root {
-            --bg: #0b0d12;
-            --panel: rgba(255,255,255,0.06);
-            --text: rgba(255,255,255,0.92);
-            --muted: rgba(255,255,255,0.68);
-            --line: rgba(255,255,255,0.12);
-            --accent: #7c5cff;
-            --accent2: #00d4ff;
-            --shadow: 0 12px 30px rgba(0,0,0,0.35);
-            --radius: 16px;
-            --maxw: 1100px;
-            --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-            --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif;
-        }
-
-        [data-theme="light"] {
-            --bg: #f6f7fb;
-            --panel: rgba(0,0,0,0.04);
-            --text: rgba(10,12,18,0.92);
-            --muted: rgba(10,12,18,0.66);
-            --line: rgba(10,12,18,0.12);
-            --shadow: 0 14px 34px rgba(0,0,0,0.10);
-        }
-
-        * {
-            box-sizing: border-box;
-        }
-
-        html, body {
-            height: 100%;
-        }
-
-        body {
-            margin: 0;
-            font-family: var(--sans);
-            background: radial-gradient(900px 500px at 15% 10%, rgba(124,92,255,0.26), transparent 60%), radial-gradient(700px 450px at 85% 15%, rgba(0,212,255,0.18), transparent 55%), radial-gradient(900px 520px at 50% 95%, rgba(124,92,255,0.14), transparent 60%), var(--bg);
-            color: var(--text);
-            line-height: 1.6;
-        }
-
-        a {
-            color: inherit;
-            text-decoration: none;
-        }
-
-            a:hover {
-                text-decoration: underline;
-            }
-
-        .container {
-            width: min(var(--maxw), calc(100% - 40px));
-            margin: 0 auto;
-        }
-
-        header {
-            position: sticky;
-            top: 0;
-            z-index: 20;
-            backdrop-filter: blur(10px);
-            background: linear-gradient(to bottom, rgba(0,0,0,0.25), rgba(0,0,0,0));
-            border-bottom: 1px solid var(--line);
-        }
-
-        [data-theme="light"] header {
-            background: linear-gradient(to bottom, rgba(255,255,255,0.75), rgba(255,255,255,0));
-        }
-
-        .nav {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 14px 0;
-            gap: 14px;
-        }
-
-        .brand {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            min-width: 220px;
-        }
-
-        .logo {
-            width: 38px;
-            height: 38px;
-            border-radius: 12px;
-            background: radial-gradient(circle at 30% 20%, var(--accent2), var(--accent));
-            box-shadow: var(--shadow);
-        }
-
-        .brand b {
-            letter-spacing: 0.2px;
-        }
-
-        .brand small {
-            display: block;
-            font-size: 12px;
-            color: var(--muted);
-            margin-top: -2px;
-        }
-
-        .links {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            flex-wrap: wrap;
-            justify-content: flex-end;
-        }
-
-            .links a {
-                color: var(--muted);
-                font-size: 14px;
-                padding: 8px 10px;
-                border-radius: 10px;
-            }
-
-                .links a:hover {
-                    color: var(--text);
-                    background: var(--panel);
-                    text-decoration: none;
-                }
-
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            padding: 10px 14px;
-            border-radius: 12px;
-            border: 1px solid var(--line);
-            background: rgba(255,255,255,0.02);
-            color: var(--text);
-            box-shadow: 0 1px 0 rgba(255,255,255,0.05) inset;
-            cursor: pointer;
-            font-size: 14px;
-        }
-
-            .btn:hover {
-                background: rgba(255,255,255,0.06);
-            }
-
-            .btn.primary {
-                border-color: transparent;
-                background: linear-gradient(135deg, var(--accent), var(--accent2));
-                color: white;
-                box-shadow: var(--shadow);
-            }
-
-                .btn.primary:hover {
-                    filter: brightness(1.03);
-                }
-
-        .hero {
-            padding: 56px 0 26px;
-        }
-
-        .heroGrid {
-            display: grid;
-            grid-template-columns: 1.25fr 0.75fr;
-            gap: 22px;
-            align-items: stretch;
-        }
-
-        .card {
-            background: var(--panel);
-            border: 1px solid var(--line);
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
-        }
-
-        .heroMain {
-            padding: 26px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 8px 12px;
-            border-radius: 999px;
-            border: 1px solid var(--line);
-            color: var(--muted);
-            font-size: 13px;
-            background: rgba(255,255,255,0.03);
-        }
-
-        .h1 {
-            margin: 14px 0 10px;
-            font-size: clamp(28px, 3.6vw, 44px);
-            line-height: 1.12;
-            letter-spacing: -0.5px;
-        }
-
-        .lead {
-            color: var(--muted);
-            font-size: 16px;
-            max-width: 62ch;
-        }
-
-        .ctaRow {
-            display: flex;
-            gap: 12px;
-            flex-wrap: wrap;
-            margin-top: 18px;
-        }
-
-        .metaRow {
-            margin-top: 18px;
-            display: flex;
-            gap: 14px;
-            flex-wrap: wrap;
-            color: var(--muted);
-            font-size: 13px;
-        }
-
-            .metaRow span {
-                display: inline-flex;
-                align-items: center;
-                gap: 8px;
-            }
-
-        .dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 999px;
-            background: var(--accent2);
-            box-shadow: 0 0 0 3px rgba(0,212,255,0.15);
-        }
-
-        .heroSide {
-            padding: 18px;
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        .mini {
-            padding: 14px;
-            border-radius: 14px;
-            border: 1px solid var(--line);
-            background: rgba(255,255,255,0.03);
-        }
-
-            .mini h3 {
-                margin: 0 0 6px;
-                font-size: 14px;
-            }
-
-            .mini p {
-                margin: 0;
-                color: var(--muted);
-                font-size: 13px;
-            }
-
-        .mono {
-            font-family: var(--mono);
-            font-size: 12.5px;
-            color: var(--muted);
-        }
-
-        section {
-            padding: 26px 0;
-        }
-
-        .sectionTitle {
-            display: flex;
-            align-items: flex-end;
-            justify-content: space-between;
-            gap: 12px;
-            margin-bottom: 14px;
-        }
-
-            .sectionTitle h2 {
-                margin: 0;
-                font-size: 20px;
-                letter-spacing: -0.2px;
-            }
-
-            .sectionTitle p {
-                margin: 0;
-                color: var(--muted);
-                font-size: 14px;
-            }
-
-        .grid3 {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 14px;
-        }
-
-        .grid2 {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 14px;
-        }
-
-        .pCard {
-            padding: 16px;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-
-        .pTop {
-            display: flex;
-            align-items: flex-start;
-            justify-content: space-between;
-            gap: 10px;
-        }
-
-        .pCard h3 {
-            margin: 0;
-            font-size: 16px;
-        }
-
-        .pCard p {
-            margin: 0;
-            color: var(--muted);
-            font-size: 14px;
-        }
-
-        .tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-        }
-
-        .tag {
-            font-size: 12px;
-            color: var(--muted);
-            border: 1px solid var(--line);
-            padding: 5px 8px;
-            border-radius: 999px;
-            background: rgba(255,255,255,0.03);
-        }
-
-        .pActions {
-            display: flex;
-            gap: 10px;
-            margin-top: 4px;
-            flex-wrap: wrap;
-        }
-
-        .skill {
-            padding: 14px;
-        }
-
-            .skill b {
-                display: block;
-                margin-bottom: 6px;
-            }
-
-        .bar {
-            height: 10px;
-            border-radius: 999px;
-            background: rgba(255,255,255,0.06);
-            border: 1px solid var(--line);
-            overflow: hidden;
-        }
-
-        .fill {
-            height: 100%;
-            width: 70%;
-            background: linear-gradient(90deg, var(--accent), var(--accent2));
-        }
-
-        .skill small {
-            color: var(--muted);
-        }
-
-        .timeline {
-            padding: 16px;
-        }
-
-        .item {
-            padding: 12px 0;
-            border-top: 1px solid var(--line);
-        }
-
-            .item:first-child {
-                border-top: 0;
-                padding-top: 0;
-            }
-
-            .item .row {
-                display: flex;
-                justify-content: space-between;
-                gap: 12px;
-                flex-wrap: wrap;
-            }
-
-            .item b {
-                font-size: 14px;
-            }
-
-            .item span {
-                color: var(--muted);
-                font-size: 13px;
-            }
-
-            .item p {
-                margin: 6px 0 0;
-                color: var(--muted);
-                font-size: 14px;
-            }
-
-        .contact {
-            padding: 18px;
-        }
-
-            .contact form {
-                display: grid;
-                gap: 10px;
-            }
-
-        input, textarea {
-            width: 100%;
-            border-radius: 12px;
-            border: 1px solid var(--line);
-            background: rgba(255,255,255,0.03);
-            color: var(--text);
-            padding: 12px 12px;
-            font: inherit;
-            outline: none;
-        }
-
-        textarea {
-            min-height: 120px;
-            resize: vertical;
-        }
-
-            input:focus, textarea:focus {
-                border-color: rgba(124,92,255,0.7);
-                box-shadow: 0 0 0 4px rgba(124,92,255,0.15);
-            }
-
-        footer {
-            padding: 22px 0 38px;
-            color: var(--muted);
-            font-size: 13px;
-        }
-
-        .footerRow {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 12px;
-            flex-wrap: wrap;
-            border-top: 1px solid var(--line);
-            padding-top: 16px;
-        }
-
-        @media (max-width: 900px) {
-            .heroGrid {
-                grid-template-columns: 1fr;
-            }
-
-            .grid3 {
-                grid-template-columns: 1fr;
-            }
-
-            .grid2 {
-                grid-template-columns: 1fr;
-            }
-
-            .brand {
-                min-width: auto;
-            }
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-            * {
-                scroll-behavior: auto !important;
-                transition: none !important;
-            }
-        }
-    </style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Mete Artun Altay — ALTAY</title>
+  <meta name="description" content="Mete Artun Altay — ALTAY | Web3 & C/C++ odaklı portföy." />
+
+  <!-- El yazısı logo fontu (M) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+
+  <!-- Instagram / LinkedIn preview -->
+  <meta property="og:title" content="Mete Artun Altay — ALTAY" />
+  <meta property="og:description" content="Web3 websitesi ve C/C++ odaklı portföy." />
+  <meta property="og:type" content="website" />
+
+  <style>
+    :root{
+      --bg:#050806;
+      --card: rgba(255,255,255,0.04);
+      --text: rgba(235,245,238,0.92);
+      --muted: rgba(235,245,238,0.68);
+      --line: rgba(235,245,238,0.12);
+
+      --accent:#00d084;        /* yeşil */
+      --accent2:#00ff9a;       /* parlak yeşil */
+      --shadow: 0 18px 45px rgba(0,0,0,0.45);
+      --radius: 18px;
+      --max: 1100px;
+
+      --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+    }
+
+    /* LIGHT THEME (açık mavi-beyaz) */
+    [data-theme="light"]{
+      --bg:#f7fbff;
+      --card: rgba(10,25,40,0.05);
+      --text: rgba(10,25,40,0.92);
+      --muted: rgba(10,25,40,0.66);
+      --line: rgba(10,25,40,0.12);
+
+      --accent:#1b86ff;      /* mavi */
+      --accent2:#7fd3ff;     /* açık mavi */
+      --shadow: 0 16px 36px rgba(0,0,0,0.12);
+    }
+
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: var(--sans);
+      color: var(--text);
+      background:
+        radial-gradient(900px 520px at 20% 10%, rgba(0,255,154,0.14), transparent 60%),
+        radial-gradient(900px 520px at 85% 20%, rgba(0,208,132,0.10), transparent 55%),
+        linear-gradient(180deg, rgba(255,255,255,0.02), transparent 26%),
+        var(--bg);
+      line-height: 1.6;
+    }
+
+    /* Açık temada arka planı mavi tonlara çevir */
+    [data-theme="light"] body{
+      background:
+        radial-gradient(900px 520px at 18% 8%, rgba(127,211,255,0.40), transparent 60%),
+        radial-gradient(900px 520px at 85% 18%, rgba(27,134,255,0.22), transparent 55%),
+        linear-gradient(180deg, rgba(0,0,0,0.02), transparent 26%),
+        var(--bg);
+    }
+
+    a{color:inherit;text-decoration:none}
+    a:hover{text-decoration:underline}
+    .wrap{width:min(var(--max), calc(100% - 40px)); margin: 0 auto;}
+
+    /* Header */
+    header{
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(10px);
+      background: rgba(5,8,6,0.70);
+      border-bottom: 1px solid var(--line);
+    }
+    [data-theme="light"] header{
+      background: rgba(247,251,255,0.75);
+    }
+
+    nav{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:14px;
+      padding: 14px 0;
+    }
+    .brand{display:flex;align-items:center;gap:10px}
+
+    /* Logo: el yazısı M */
+    .logo{
+      width:40px;
+      height:40px;
+      border-radius:14px;
+
+      display:flex;
+      align-items:center;
+      justify-content:center;
+
+      font-family:"Dancing Script", cursive;
+      font-weight:700;
+      font-size:22px;
+      font-style:italic;
+      letter-spacing:0.2px;
+
+      background: radial-gradient(circle at 30% 20%, var(--accent2), var(--accent));
+      box-shadow: var(--shadow);
+
+      color:#02150d; /* koyu tema */
+      user-select:none;
+    }
+    [data-theme="light"] .logo{ color:#0a1928; }
+
+    .brand b{letter-spacing:.2px}
+    .brand small{display:block;color:var(--muted);margin-top:-2px}
+
+    .links{display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-end}
+
+    .pill{
+      padding:9px 12px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      color: var(--muted);
+      background: rgba(255,255,255,0.02);
+    }
+    [data-theme="light"] .pill{ background: rgba(10,25,40,0.03); }
+    .pill:hover{color:var(--text);text-decoration:none;background: rgba(255,255,255,0.06);}
+    [data-theme="light"] .pill:hover{ background: rgba(10,25,40,0.06); }
+
+    .btn{
+      padding:10px 14px;
+      border-radius: 12px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,0.02);
+      cursor:pointer;
+      color: var(--text);
+    }
+    [data-theme="light"] .btn{ background: rgba(10,25,40,0.03); }
+    .btn:hover{background: rgba(255,255,255,0.06);}
+    [data-theme="light"] .btn:hover{ background: rgba(10,25,40,0.07); }
+
+    .btn.primary{
+      border: none;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      color:#052012;
+      font-weight: 600;
+      box-shadow: var(--shadow);
+    }
+    [data-theme="light"] .btn.primary{ color:#0a1928; }
+
+    /* Layout */
+    main{padding: 44px 0 40px}
+    .grid{display:grid;grid-template-columns: 1.2fr .8fr; gap: 14px;}
+    .card{
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 18px;
+    }
+
+    .badge{
+      display:inline-flex; align-items:center; gap:10px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.02);
+      color: var(--muted);
+      font-size: 13px;
+    }
+    [data-theme="light"] .badge{ background: rgba(10,25,40,0.03); }
+
+    .dot{
+      width:10px;height:10px;border-radius:999px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      box-shadow: 0 0 0 4px rgba(0,255,154,0.12);
+    }
+    [data-theme="light"] .dot{ box-shadow: 0 0 0 4px rgba(27,134,255,0.14); }
+
+    h1{
+      margin: 12px 0 10px;
+      font-size: clamp(28px, 4vw, 46px);
+      line-height: 1.08;
+      letter-spacing: -0.5px;
+    }
+    .lead{margin:0;color:var(--muted);max-width: 72ch; font-size: 15.5px;}
+    .row{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+    .meta{margin-top:14px;color:var(--muted);display:flex;gap:14px;flex-wrap:wrap;font-size:13px}
+
+    section{padding: 18px 0}
+    .sectionHead{
+      display:flex;align-items:flex-end;justify-content:space-between;gap:12px;
+      margin-bottom: 10px;
+    }
+    h2{margin:0;font-size:18px}
+    .sub{margin:0;color:var(--muted);font-size:13px}
+
+    .cards{display:grid;grid-template-columns: repeat(3, 1fr); gap: 12px;}
+    .proj h3{margin:0 0 6px;font-size:15px}
+    .proj p{margin:0;color:var(--muted);font-size:14px}
+    .tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+    .tag{
+      font-size: 12px;
+      color: var(--muted);
+      border: 1px solid var(--line);
+      padding: 5px 8px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.02);
+    }
+    [data-theme="light"] .tag{ background: rgba(10,25,40,0.03); }
+
+    /* Skills */
+    .skill b{display:block;margin-bottom:8px}
+    .bar{
+      height:10px;border-radius:999px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,0.03);
+      overflow:hidden;
+    }
+    [data-theme="light"] .bar{ background: rgba(10,25,40,0.05); }
+
+    .fill{
+      height:100%;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      width: 70%;
+    }
+    .skill small{display:block;margin-top:8px;color:var(--muted)}
+
+    /* Contact */
+    form{display:grid;gap:10px}
+    input, textarea{
+      width:100%;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.02);
+      color: var(--text);
+      padding: 12px;
+      font: inherit;
+      outline: none;
+    }
+    [data-theme="light"] input, [data-theme="light"] textarea{ background: rgba(255,255,255,0.72); }
+    textarea{min-height:120px;resize:vertical}
+    input:focus, textarea:focus{
+      border-color: rgba(0,255,154,0.60);
+      box-shadow: 0 0 0 4px rgba(0,255,154,0.12);
+    }
+    [data-theme="light"] input:focus, [data-theme="light"] textarea:focus{
+      border-color: rgba(27,134,255,0.65);
+      box-shadow: 0 0 0 4px rgba(27,134,255,0.14);
+    }
+
+    footer{
+      border-top: 1px solid var(--line);
+      padding-top: 16px;
+      margin-top: 14px;
+      color: var(--muted);
+      font-size: 13px;
+      display:flex;
+      justify-content:space-between;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+
+    /* Icon buttons (LinkedIn/Instagram) */
+    .iconBtn{
+      width:100%;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+    }
+    .icon{
+      width:18px;
+      height:18px;
+      display:inline-block;
+    }
+
+    @media (max-width: 900px){
+      .grid{grid-template-columns: 1fr;}
+      .cards{grid-template-columns: 1fr;}
+    }
+  </style>
 </head>
 
 <body data-theme="dark">
-    <header>
-        <div class="container">
-            <div class="nav">
-                <a class="brand" href="#top" aria-label="Ana sayfaya dön">
-                    <div class="logo" aria-hidden="true"></div>
-                    <div>
-                        <b>Mete Artun Altay</b>
-                        <small>ALTAY • Portföy</small>
-                    </div>
-                </a>
-
-                <nav class="links" aria-label="Site menüsü">
-                    <a href="#projects">Projeler</a>
-                    <a href="#skills">Yetenekler</a>
-                    <a href="#experience">Deneyim</a>
-                    <a href="#contact">İletişim</a>
-                    <button class="btn" id="themeBtn" type="button" aria-label="Tema değiştir">Tema</button>
-                    <a class="btn primary" href="#contact">Birlikte çalışalım</a>
-                </nav>
-            </div>
+<header>
+  <div class="wrap">
+    <nav>
+      <a class="brand" href="#top" aria-label="Ana sayfaya dön">
+        <div class="logo" aria-hidden="true">M</div>
+        <div>
+          <b>Mete Artun Altay</b>
+          <small>ALTAY • Web3 & C/C++</small>
         </div>
-    </header>
+      </a>
 
-    <main id="top">
-        <div class="container">
-            <section class="hero" aria-label="Giriş">
-                <div class="heroGrid">
-                    <div class="card heroMain">
-                        <div class="badge">
-                            <span class="dot" aria-hidden="true"></span>
-                            <span>Şu an açık: Staj / Part-time / Freelance</span>
-                        </div>
+      <div class="links">
+        <a class="pill" href="#projeler">Projeler</a>
+        <a class="pill" href="#yetenekler">Yetenekler</a>
+        <a class="pill" href="#egitim">Eğitim</a>
+        <a class="pill" href="#sertifika">Sertifika/Kurs</a>
 
-                        <h1 class="h1">
-                            Merhaba, ben
-                            <span style="background:linear-gradient(135deg,var(--accent),var(--accent2)); -webkit-background-clip:text; background-clip:text; color:transparent;">
-                                Mete Artun Altay
-                            </span>.
-                            Sistematik, ölçülebilir ve ürün odaklı işler geliştiriyorum.
-                        </h1>
+        <button class="btn" id="themeBtn" type="button" aria-label="Tema değiştir">Tema</button>
 
-                        <p class="lead">
-                            ALTAY altında; elektrik-elektronik / yazılım / veri odaklı projeler geliştiriyorum.
-                            Bu sayfa; seçili çalışmalarımı, teknik yeteneklerimi ve iletişim kanallarımı içerir.
-                        </p>
+        <a class="btn primary" href="#iletisim">İletişim</a>
+      </div>
+    </nav>
+  </div>
+</header>
 
-                        <div class="ctaRow">
-                            <a class="btn primary" href="#projects">Projeleri gör</a>
-                            <a class="btn" href="#" download>CV indir</a>
-                            <a class="btn" href="https://github.com/" target="_blank" rel="noreferrer">GitHub</a>
-                            <a class="btn" href="https://share.google/dnbdnVedZxGnpGSgG" target="_blank" rel="noreferrer">LinkedIn</a>
-                        </div>
-
-                        <div class="metaRow">
-                            <span><span class="mono">📍</span> İstanbul / Remote</span>
-                            <span><span class="mono">✉</span> meteartunaltay08@gmail.com</span>
-                            <span><span class="mono">⚙</span> Odak: gömülü • web • otomasyon</span>
-                        </div>
-                    </div>
-
-                    <aside class="card heroSide" aria-label="Hızlı özet">
-                        <div class="mini">
-                            <h3>Öne çıkan</h3>
-                            <p>Performans, okunabilirlik ve test edilebilirlik. Üretim kalitesi yaklaşımı.</p>
-                        </div>
-                        <div class="mini">
-                            <h3>Teknoloji yığını</h3>
-                            <p class="mono">C/C++ • Python • JavaScript • Node.js • SQL • Git</p>
-                        </div>
-                        <div class="mini">
-                            <h3>Hızlı metrik</h3>
-                            <p><b>8+</b> tamamlanmış proje • <b>3</b> takım çalışması • <b>1</b> yayın/rapor</p>
-                        </div>
-                        <div class="mini">
-                            <h3>Not</h3>
-                            <p>“Projeler” bölümünde canlı demo ve repo linkleri bulunur.</p>
-                        </div>
-                    </aside>
-                </div>
-            </section>
-
-            <section id="projects" aria-label="Projeler">
-                <div class="sectionTitle">
-                    <div>
-                        <h2>Projeler</h2>
-                        <p>Seçili çalışmalar — kısa açıklama, teknoloji etiketleri ve bağlantılar.</p>
-                    </div>
-                    <a class="btn" href="#contact">Proje teklifi gönder</a>
-                </div>
-
-                <div class="grid3">
-                    <article class="card pCard">
-                        <div class="pTop">
-                            <div>
-                                <h3>Proje 01 — Akıllı İzleme Paneli</h3>
-                                <p>Gerçek zamanlı sensör verisi, alarm kuralları ve raporlama.</p>
-                            </div>
-                            <span class="tag">2025</span>
-                        </div>
-                        <div class="tags">
-                            <span class="tag">Node.js</span><span class="tag">WebSocket</span><span class="tag">PostgreSQL</span>
-                        </div>
-                        <div class="pActions">
-                            <a class="btn" href="#" target="_blank" rel="noreferrer">Canlı Demo</a>
-                            <a class="btn" href="#" target="_blank" rel="noreferrer">Repo</a>
-                            <a class="btn" href="#" target="_blank" rel="noreferrer">Detay</a>
-                        </div>
-                    </article>
-
-                    <article class="card pCard">
-                        <div class="pTop">
-                            <div>
-                                <h3>Proje 02 — Görüntüden Kusur Tespiti</h3>
-                                <p>Basit CV pipeline, metrik takibi ve model versiyonlama.</p>
-                            </div>
-                            <span class="tag">2024</span>
-                        </div>
-                        <div class="tags">
-                            <span class="tag">Python</span><span class="tag">OpenCV</span><span class="tag">ML</span>
-                        </div>
-                        <div class="pActions">
-                            <a class="btn" href="#" target="_blank" rel="noreferrer">Rapor</a>
-                            <a class="btn" href="#" target="_blank" rel="noreferrer">Repo</a>
-                            <a class="btn" href="#" target="_blank" rel="noreferrer">Sunum</a>
-                        </div>
-                    </article>
-
-                    <article class="card pCard">
-                        <div class="pTop">
-                            <div>
-                                <h3>Proje 03 — Gömülü Kontrol Uygulaması</h3>
-                                <p>PID kontrol, loglama ve seri haberleşme.</p>
-                            </div>
-                            <span class="tag">2024</span>
-                        </div>
-                        <div class="tags">
-                            <span class="tag">C/C++</span><span class="tag">RTOS</span><span class="tag">UART</span>
-                        </div>
-                        <div class="pActions">
-                            <a class="btn" href="#" target="_blank" rel="noreferrer">Dokümantasyon</a>
-                            <a class="btn" href="#" target="_blank" rel="noreferrer">Repo</a>
-                        </div>
-                    </article>
-                </div>
-            </section>
-
-            <section id="skills" aria-label="Yetenekler">
-                <div class="sectionTitle">
-                    <div>
-                        <h2>Yetenekler</h2>
-                        <p>İstersen yüzdeleri senin gerçek seviyene göre güncelleyebilirim.</p>
-                    </div>
-                </div>
-
-                <div class="grid3">
-                    <div class="card skill">
-                        <b>Backend / API</b>
-                        <div class="bar"><div class="fill" style="width:78%"></div></div>
-                        <small>Node.js, REST, auth, caching</small>
-                    </div>
-                    <div class="card skill">
-                        <b>Python / Otomasyon</b>
-                        <div class="bar"><div class="fill" style="width:82%"></div></div>
-                        <small>ETL, veri analizi, scriptleme</small>
-                    </div>
-                    <div class="card skill">
-                        <b>Gömülü Sistemler</b>
-                        <div class="bar"><div class="fill" style="width:70%"></div></div>
-                        <small>MCU, haberleşme protokolleri</small>
-                    </div>
-                </div>
-            </section>
-
-            <section id="experience" aria-label="Deneyim ve eğitim">
-                <div class="sectionTitle">
-                    <div>
-                        <h2>Deneyim / Eğitim</h2>
-                        <p>Kısa ve okunabilir timeline formatı.</p>
-                    </div>
-                </div>
-
-                <div class="grid2">
-                    <div class="card timeline">
-                        <div class="item">
-                            <div class="row">
-                                <b>Staj — Firma Adı</b>
-                                <span>Haz 2025 – Eyl 2025</span>
-                            </div>
-                            <p>Örnek: API geliştirme, log/izleme kurulumu, performans iyileştirme.</p>
-                        </div>
-                        <div class="item">
-                            <div class="row">
-                                <b>Proje Asistanlığı — Laboratuvar</b>
-                                <span>2024</span>
-                            </div>
-                            <p>Örnek: test düzeneği, ölçüm otomasyonu, raporlama.</p>
-                        </div>
-                    </div>
-
-                    <div class="card timeline">
-                        <div class="item">
-                            <div class="row">
-                                <b>Üniversite — Bölüm</b>
-                                <span>2022 – 2026</span>
-                            </div>
-                            <p>Örnek: Devreler, kontrol, sinyaller, sayısal tasarım, yazılım.</p>
-                        </div>
-                        <div class="item">
-                            <div class="row">
-                                <b>Sertifika / Kurs</b>
-                                <span>2023</span>
-                            </div>
-                            <p>Örnek: Git, Linux, temel bulut, veri yapıları.</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section id="contact" aria-label="İletişim">
-                <div class="sectionTitle">
-                    <div>
-                        <h2>İletişim</h2>
-                        <p>Form demo amaçlı; istersen bunu e-posta servisine bağlarız.</p>
-                    </div>
-                </div>
-
-                <div class="grid2">
-                    <div class="card contact">
-                        <h3 style="margin:0 0 8px;">Mesaj gönder</h3>
-                        <form onsubmit="return handleSubmit(event)">
-                            <input required name="name" placeholder="Ad Soyad" />
-                            <input required type="email" name="email" placeholder="E-posta" />
-                            <textarea required name="message" placeholder="Kısa mesaj..."></textarea>
-                            <button class="btn primary" type="submit">Gönder</button>
-                            <p id="formNote" style="margin:0; color:var(--muted); font-size:13px;"></p>
-                        </form>
-                    </div>
-
-                    <div class="card contact">
-                        <h3 style="margin:0 0 8px;">Hızlı bilgiler</h3>
-                        <p style="margin:0 0 10px; color:var(--muted);">
-                            ALTAY altında projeler geliştiriyorum. “Projeler” bölümüne filtre, blog yazıları ve case study sayfaları ekleyebiliriz.
-                        </p>
-
-                        <div class="mini" style="margin-top:10px;">
-                            <h3>Bağlantılar</h3>
-                            <p class="mono">
-                                LinkedIn: <a href="https://share.google/dnbdnVedZxGnpGSgG" target="_blank" rel="noreferrer">Profil</a><br />
-                                Mail: <a href="mailto:meteartunaltay08@gmail.com">meteartunaltay08@gmail.com</a>
-                            </p>
-                        </div>
-
-                        <div class="mini" style="margin-top:10px;">
-                            <h3>Çalışma alanları</h3>
-                            <p class="mono">Web • Otomasyon • Gömülü • Veri</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <footer>
-                <div class="footerRow">
-                    <span>© <span id="year"></span> Mete Artun Altay — ALTAY. Tüm hakları saklıdır.</span>
-                    <span class="mono">Tek dosya • hızlı • responsive</span>
-                </div>
-            </footer>
+<main id="top">
+  <div class="wrap">
+    <!-- HERO -->
+    <div class="grid">
+      <div class="card">
+        <div class="badge">
+          <span class="dot" aria-hidden="true"></span>
+          <span>Odak: Web3 websitesi + C/C++</span>
         </div>
-    </main>
 
-    <script>
-        const root = document.body;
-        const themeBtn = document.getElementById("themeBtn");
-        const saved = localStorage.getItem("theme");
-        if (saved) root.setAttribute("data-theme", saved);
+        <h1>Web3 odaklı web siteleri ve C/C++ tabanlı sistemler geliştiriyorum.</h1>
 
-        themeBtn.addEventListener("click", () => {
-            const current = root.getAttribute("data-theme") || "dark";
-            const next = current === "dark" ? "light" : "dark";
-            root.setAttribute("data-theme", next);
-            localStorage.setItem("theme", next);
-        });
+        <p class="lead">
+          ALTAY altında; modern web arayüzleri, blokzincir, Web3 ve C/C++ odaklı mühendislik projeleri üzerinde çalışıyorum.
+        </p>
 
-        document.getElementById("year").textContent = new Date().getFullYear();
+        <div class="row">
+          <a class="btn primary" href="#projeler">Projeleri gör</a>
+          <a class="btn" href="mailto:meteartunaltay08@gmail.com">E-posta</a>
+          <a class="btn" href="https://share.google/dnbdnVedZxGnpGSgG" target="_blank" rel="noreferrer">LinkedIn</a>
+        </div>
 
-        function handleSubmit(e) {
-            e.preventDefault();
-            const note = document.getElementById("formNote");
-            note.textContent = "Demo: Form gönderimi yerelde yakalandı. İstersen bunu gerçek mail/DB servisine bağlarız.";
-            e.target.reset();
-            return false;
-        }
-    </script>
+        <div class="meta">
+          <span><span class="mono">📍</span> Ankara / Çankaya</span>
+          <span><span class="mono">✉</span> meteartunaltay08@gmail.com</span>
+          <span><span class="mono">🎓</span> Çankaya Üniversitesi • Bilgisayar Müh. (2. Sınıf)</span>
+        </div>
+      </div>
+
+      <aside class="card">
+        <h2 style="margin:0 0 10px;">Hızlı Bilgiler</h2>
+        <p style="margin:0;color:var(--muted)"></p>
+
+        <div class="tags" style="margin-top:12px;">
+          <span class="tag">C</span>
+          <span class="tag">C++</span>
+          <span class="tag">Web3</span>
+          <span class="tag">Web Development</span>
+        </div>
+
+        <!-- LinkedIn + Instagram ikonlu butonlar -->
+        <div style="margin-top:14px; display:grid; gap:10px;">
+          <a class="btn iconBtn" href="https://share.google/dnbdnVedZxGnpGSgG" target="_blank" rel="noreferrer">
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" fill="currentColor">
+              <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.266 2.37 4.266 5.455v6.286zM5.337 7.433a2.062 2.062 0 110-4.124 2.062 2.062 0 010 4.124zM7.119 20.452H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C0 .774 23.2 0 22.222 0h.003z"/>
+            </svg>
+            LinkedIn
+          </a>
+
+          <a class="btn iconBtn"
+             href="https://www.instagram.com/mtartun.alty?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
+             target="_blank" rel="noreferrer">
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" fill="currentColor">
+              <path d="M7.75 2h8.5C19.425 2 22 4.575 22 7.75v8.5C22 19.425 19.425 22 16.25 22h-8.5C4.575 22 2 19.425 2 16.25v-8.5C2 4.575 4.575 2 7.75 2zm8.5 1.5h-8.5C5.402 3.5 3.5 5.402 3.5 7.75v8.5c0 2.348 1.902 4.25 4.25 4.25h8.5c2.348 0 4.25-1.902 4.25-4.25v-8.5c0-2.348-1.902-4.25-4.25-4.25z"/>
+              <path d="M12 7.1a4.9 4.9 0 110 9.8 4.9 4.9 0 010-9.8zm0 1.5a3.4 3.4 0 100 6.8 3.4 3.4 0 000-6.8z"/>
+              <path d="M17.4 6.2a1.15 1.15 0 110 2.3 1.15 1.15 0 010-2.3z"/>
+            </svg>
+            Instagram
+          </a>
+        </div>
+      </aside>
+    </div>
+
+    <section id="projeler">
+      <div class="sectionHead">
+        <h2>Projeler</h2>
+        <p class="sub"></p>
+      </div>
+
+      <div class="cards">
+        <div class="card proj">
+          <h3>Web3 Landing / Blockchain</h3>
+          <p></p>
+          <div class="tags">
+            <span class="tag">Web</span><span class="tag">Web3</span><span class="tag">UI</span>
+          </div>
+        </div>
+
+        <div class="card proj">
+          <h3>C/C++ Sistem Projesi</h3>
+          <p>Performans odaklı C/C++ uygulaması (algoritma / sistem programlama).</p>
+          <div class="tags">
+            <span class="tag">C</span><span class="tag">C++</span><span class="tag">Performance</span>
+          </div>
+        </div>
+
+        <div class="card proj">
+          <h3>Blockchain Entegrasyon</h3>
+          <p></p>
+          <div class="tags">
+            <span class="tag">Blockchain</span><span class="tag">Web3</span><span class="tag">Integration</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="yetenekler">
+      <div class="sectionHead">
+        <h2>Yetenekler</h2>
+        <p class="sub"></p>
+      </div>
+
+      <div class="cards">
+        <div class="card skill">
+          <b>C / C++</b>
+          <div class="bar"><div class="fill" style="width:88%"></div></div>
+          <small>Seviye: Yetkin</small>
+        </div>
+
+        <div class="card skill">
+          <b>Web Development</b>
+          <div class="bar"><div class="fill" style="width:78%"></div></div>
+          <small>Seviye: Yetkin</small>
+        </div>
+
+        <div class="card skill">
+          <b>Blockchain / Web3</b>
+          <div class="bar"><div class="fill" style="width:75%"></div></div>
+          <small>Seviye: Yetkin</small>
+        </div>
+      </div>
+    </section>
+
+    <section id="egitim">
+      <div class="sectionHead">
+        <h2>Eğitim</h2>
+      </div>
+
+      <div class="card">
+        <b>Çankaya Üniversitesi — Bilgisayar Mühendisliği</b>
+        <p style="margin:6px 0 0;color:var(--muted)">2. sınıf • Ankara / Çankaya</p>
+      </div>
+    </section>
+
+    <section id="sertifika">
+      <div class="sectionHead">
+        <h2>Sertifika / Kurs</h2>
+        <p class="sub"></p>
+      </div>
+
+      <div class="card">
+        <p style="margin:0;color:var(--muted)">
+          LinkedIn: <a href="https://share.google/dnbdnVedZxGnpGSgG" target="_blank" rel="noreferrer">Profil</a>
+        </p>
+      </div>
+    </section>
+
+    <section id="iletisim">
+      <div class="sectionHead">
+        <h2>İletişim</h2>
+        <p class="sub"></p>
+      </div>
+
+      <div class="card">
+        <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" onsubmit="return onSubmit(event)">
+          <input type="hidden" name="form-name" value="contact" />
+          <p style="display:none;">
+            <label>Don’t fill this out if you're human: <input name="bot-field" /></label>
+          </p>
+
+          <input name="name" required placeholder="Ad Soyad" />
+          <input name="email" type="email" required placeholder="E-posta" />
+          <textarea name="message" required placeholder="Mesaj..."></textarea>
+
+          <button class="btn primary" type="submit">Gönder</button>
+          <p id="note" style="margin:0;color:var(--muted);font-size:13px"></p>
+        </form>
+
+        <div style="margin-top:12px;color:var(--muted);font-size:13px">
+          Alternatif: <a href="mailto:meteartunaltay08@gmail.com">meteartunaltay08@gmail.com</a>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <span>© <span id="year"></span> Mete Artun Altay — ALTAY</span>
+    </footer>
+  </div>
+</main>
+
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+  function onSubmit(e){
+    const note = document.getElementById("note");
+    note.textContent = "Gönderiliyor...";
+    return true;
+  }
+
+  // Theme toggle + kalıcı kayıt
+  const root = document.body;
+  const themeBtn = document.getElementById("themeBtn");
+
+  const savedTheme = localStorage.getItem("theme");
+  if (savedTheme === "light" || savedTheme === "dark") {
+    root.setAttribute("data-theme", savedTheme);
+  }
+
+  themeBtn.addEventListener("click", () => {
+    const current = root.getAttribute("data-theme") || "dark";
+    const next = current === "dark" ? "light" : "dark";
+    root.setAttribute("data-theme", next);
+    localStorage.setItem("theme", next);
+  });
+</script>
 </body>
 </html>
